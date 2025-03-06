@@ -1,14 +1,15 @@
 import os
-
-from email_client import connect_to_gmail, fetch_emails
-
 from dotenv import load_dotenv
+
+from email_client import get_mail
 
 def main():
     # Load environment variables
-    load_dotenv()
+    
+    load_dotenv(override=True)
     email = os.getenv("EMAIL_ADDRESS")
     password = os.getenv("EMAIL_PASSWORD")
+    get_mail(email,password)
 
 
 if __name__ == "__main__":
