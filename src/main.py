@@ -18,7 +18,7 @@ def main():
         sys.exit(0)
     contents = mail[1]
     summaries = summarize(contents) # Change the contents to summaries
-    #send_mail(zip(mail[0],summaries,mail[2]))
+    send_mail(list(zip(mail[0],summaries,mail[2])))
 
 if __name__ == "__main__":
     main()

@@ -12,6 +12,10 @@ def summarize(contents):
         {"role": "user", "content": string}
     ]
     )
-    return completion.choices[0].message.content
+    return process_summaries(completion.choices[0].message.content)
     
-    
+def process_summaries(summaries):
+    summaries = summaries.split("$$")
+    summaries = [sum.rstrip() for sum in summaries]
+    summaries = [sum.lstrip() for sum in summaries]
+    return summaries
