@@ -35,7 +35,7 @@ def parse_mail(mail):
         titles[i] = titles[i].split("Title:")[1]
         titles[i] = titles[i].split("Authors")[0]
         titles[i] = titles[i].rstrip()
-        
+        titles[i] = titles[i].replace('\n', ' ').replace('\r', ' ').strip()
     # Process links
 
     for i in range(len(links)):

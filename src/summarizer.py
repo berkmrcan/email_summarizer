@@ -1,4 +1,5 @@
 from openai import OpenAI
+import re 
 
 def summarize(contents):
     client = OpenAI()
@@ -18,4 +19,5 @@ def process_summaries(summaries):
     summaries = summaries.split("$$")
     summaries = [sum.rstrip() for sum in summaries]
     summaries = [sum.lstrip() for sum in summaries]
+    summaries = [re.sub(r'^Summary \d+:?', '', summary).strip() for summary in summaries]
     return summaries
