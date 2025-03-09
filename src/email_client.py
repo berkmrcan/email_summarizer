@@ -6,9 +6,9 @@ def get_mail(username,password):
     mail = imaplib.IMAP4_SSL("imap.gmail.com")
     mail.login(username,password)
     mail.select("inbox")
-    today_date = datetime.now().strftime("%d-%b-%Y")
+    today_date = (datetime.now() - timedelta(2)).strftime("%d-%b-%Y") 
     status, messages = mail.search(None, f"FROM @arxiv.org ON {today_date}")
-    if status == "OK":
+    if status == "OK" and messages[0] != b'':
         num = messages[0]
         _ , data = mail.fetch(num, '(RFC822)')
         msg = email.message_from_bytes(data[0][1])
